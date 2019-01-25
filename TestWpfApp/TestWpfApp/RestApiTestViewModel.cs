@@ -123,6 +123,12 @@ namespace TestWpfApp
 
         private string GetTimeStamp()
         {
+            // TODO: without "/ 100" get error
+            // This page contains the following errors:
+            // error on line 1 at column 1: Document is empty
+            // Below is a rendering of the page up to the first error.
+
+            // https://stackoverflow.com/questions/17632584/how-to-get-the-unix-timestamp-in-c-sharp/21055459
             Int32 unixTimestamp = (Int32)(_datePick.Subtract(new DateTime(1970, 1, 1))).TotalSeconds / 100;
             return unixTimestamp.ToString();
         }
