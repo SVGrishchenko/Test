@@ -9,16 +9,30 @@
         Title="REST API Test" Height="450" Width="800"
         d:DataContext="{d:DesignInstance local:RestApiTestViewModel}">
 
-    <Grid Margin="0,0,-6.4,7">
-        <DatePicker HorizontalAlignment="Left" Margin="75,50,0,0" VerticalAlignment="Top" SelectedDateFormat="Short" SelectedDate="{Binding Path=DatePick, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                       DisplayDateStart="3/1/2000"  
-                        DisplayDateEnd="3/31/2040" />
-        <Button x:Name="button" Content="Run" HorizontalAlignment="Left" Margin="417,54,0,0" VerticalAlignment="Top" Width="75"
-                Command="{Binding Path=RunCommand}"/>
-        <Label x:Name="label" Content="Timestamp :" HorizontalAlignment="Left" Margin="75,104,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Output Value :" HorizontalAlignment="Left" Margin="75,148,0,0" VerticalAlignment="Top"/>
-    
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="173" Margin="113,211,0,0" VerticalAlignment="Top" Width="302" ItemsSource="{Binding Path=Symbols}"
+    <StackPanel x:Name="panel" Orientation="Vertical">
+        <WrapPanel x:Name="wrappanel" >
+            <DatePicker HorizontalAlignment="Left"  VerticalAlignment="Top" SelectedDateFormat="Short" 
+                        SelectedDate="{Binding Path=DatePick, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        DisplayDateStart="3/1/2000"  
+                        DisplayDateEnd="3/31/2040" 
+                        Margin="10"/>
+            <timepicker:TimePicker  x:Name="TimePicker" HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" 
+                                SelectedTime="{Binding Path=TimePickerString, Mode=OneWay}" Margin="10"/>
+            <Button x:Name="button" Content="Run" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75"
+                Command="{Binding Path=RunCommand}" Margin="10"/>
+        </WrapPanel>
+
+        <WrapPanel x:Name="wrappanel2" >
+            <Label x:Name="TimeStamplabel" Content="Timestamp :" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top"/>
+            <TextBox x:Name="Stamp" HorizontalAlignment="Left" Height="23" Margin="10" TextWrapping="Wrap" VerticalAlignment="Top" Width="252" Text="{Binding TimeStamp, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+        </WrapPanel>
+
+        <WrapPanel x:Name="wrappanel3" >
+            <Label x:Name="Outputlabel" Content="Output Value :" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top"/>
+            <TextBox x:Name="Output"  Height="47" Margin="10" TextWrapping="Wrap" VerticalAlignment="Top" Width="600"  Text="{Binding OutputValue, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+        </WrapPanel>
+
+        <ListView x:Name="listView" HorizontalAlignment="Left"  Height="226" Margin="100, 10" VerticalAlignment="Top" Width="204" ItemsSource="{Binding Path=Symbols}"
                   ScrollViewer.VerticalScrollBarVisibility="Visible"
           ScrollViewer.CanContentScroll="False">
             <ListView.View>
@@ -28,10 +42,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="Stamp" HorizontalAlignment="Left" Height="23" Margin="163,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="252" Text="{Binding TimeStamp, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
-        <TextBox x:Name="Output" HorizontalAlignment="Left" Height="47" Margin="166,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="610" Text="{Binding OutputValue, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
-        <timepicker:TimePicker  x:Name="TimePicker" HorizontalAlignment="Left" Margin="206,52,0,0" VerticalAlignment="Top" Height="21" 
-                                SelectedTime="{Binding Path=TimePickerString, Mode=OneWay}"/>
-       
-    </Grid>
+
+    </StackPanel>
+
 </Window>
