@@ -18,11 +18,15 @@ namespace TestWpfApp
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RestApiTestMainWindow
+        : Window
     {
-        public MainWindow()
+        public RestApiTestMainWindow()
         {
             InitializeComponent();
+            DataContext = new RestApiTestViewModel(new XmlReader());
         }
+
+
     }
 }
