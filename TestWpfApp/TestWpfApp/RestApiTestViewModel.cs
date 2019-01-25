@@ -127,7 +127,7 @@ namespace TestWpfApp
             return unixTimestamp.ToString();
         }
 
-        private void Run()
+        public void Run()
         {
             OutputValue = "";
             Symbols.Clear(); 
